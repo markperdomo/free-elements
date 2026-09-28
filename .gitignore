@@ -1,0 +1,16 @@
+*.pkg
+*.ppam
+*.pptm
+*.key
+*.pem
+*.p12
+*.pfx
+.env
+.env.*
+research/
+.certs/
+node_modules/
+__pycache__/
+*.pyc
+dist/
+.DS_Store

@@ -1,0 +1,100 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Free Elements · Slide tools</title>
+  <link rel="icon" href="/assets/icon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="/styles.css">
+  <script type="module" src="/src/app.js"></script>
+</head>
+<body>
+  <header class="app-header">
+    <a class="brand" href="/" aria-label="Free Elements home"><span class="brand-mark">fe</span><span>Free Elements</span></a>
+    <div class="header-right"><span id="mode" class="badge">Playground</span><span class="version">0.1</span></div>
+  </header>
+  <main>
+    <section class="workspace" aria-label="Slide playground">
+      <div class="canvas-toolbar"><select id="example" aria-label="Playground example"><option value="layout">Layout</option><option value="Chevron">Chevrons</option><option value="RightArrow">Right arrows</option><option value="RoundRectangle">Rounded corners</option><option value="text">Text</option></select><div class="canvas-actions"><button id="undo" class="quiet" title="Undo (⌘Z)">↶ Undo</button><button id="redo" class="quiet" title="Redo (⇧⌘Z)">↷ Redo</button><button id="reset" class="quiet">Reset</button><button id="select-all" class="quiet">Select all</button><button id="export" class="quiet">Export SVG ↗</button></div></div>
+      <div class="slide-stage"><div class="slide-wrap"><svg id="slide" viewBox="0 0 960 540" xmlns="http://www.w3.org/2000/svg" aria-label="Editable slide. Click a shape to select; Shift-click to select more."></svg></div></div>
+      <div class="canvas-footer"><span>Click to select · Shift-click to add · Drag to move</span><span>16:9 · 960 × 540 pt</span></div>
+      <details class="selection-inspector"><summary>Objects on the slide</summary><div id="object-list"></div></details>
+    </section>
+    <aside class="tool-panel" aria-label="Slide editing tools">
+      <fieldset id="tools">
+        <div class="selection-bar"><span id="selection-count">4 selected</span><label for="reference" title="Reference shape">Ref</label><select id="reference" aria-label="Reference shape" title="The shape to copy alignment, size, or formatting from"></select><button id="refresh" class="icon-button" data-icon="refresh" aria-label="Refresh selection" title="Refresh selected shapes"><span>Refresh</span></button></div>
+        <section class="tool-section position-section" aria-labelledby="position-heading">
+          <div class="section-heading"><h3 id="position-heading">Position</h3><select id="align-target" aria-label="Align to" title="Align to the reference shape or the selection’s outer bounds"><option value="reference">To reference</option><option value="selection">To selection</option></select></div>
+          <div class="icon-row" id="alignment-tools" role="group" aria-label="Align shapes"></div>
+        </section>
+        <section class="tool-section spacing-section" aria-labelledby="spacing-heading">
+          <div class="section-heading"><h3 id="spacing-heading">Spacing</h3><div class="parameter-row"><label title="Gap in points">Gap <input id="gap" type="number" min="0" max="1000" step="1" value="24" aria-label="Gap in points"></label><label title="Grid columns">Cols <input id="columns" type="number" value="2" min="1" max="100" aria-label="Grid columns"></label></div></div>
+          <div class="icon-row" role="group" aria-label="Space and arrange shapes">
+            <button class="icon-button" data-icon="equal-h" data-command="distribute" data-axis="horizontal" aria-label="Equal horizontal gaps" title="Equal horizontal gaps — keep the outer shapes fixed"><span>Equal H</span></button>
+            <button class="icon-button" data-icon="equal-v" data-command="distribute" data-axis="vertical" aria-label="Equal vertical gaps" title="Equal vertical gaps — keep the outer shapes fixed"><span>Equal V</span></button>
+            <button class="icon-button" data-icon="space-h" data-command="space" data-axis="horizontal" aria-label="Space across" title="Space across using the gap in points"><span>Space H</span></button>
+            <button class="icon-button" data-icon="space-v" data-command="space" data-axis="vertical" aria-label="Space down" title="Space down using the gap in points"><span>Space V</span></button>
+            <button class="icon-button" data-icon="grid" data-command="grid" aria-label="Arrange grid" title="Arrange a grid using the gap and column count"><span>Grid</span></button>
+            <button class="icon-button" data-icon="swap" data-command="swap" aria-label="Swap two shapes" title="Swap the centers of exactly two selected shapes"><span>Swap</span></button>
+          </div>
+        </section>
+        <section class="tool-section size-section" aria-labelledby="size-heading">
+          <div class="size-row"><h3 id="size-heading">Size</h3><div class="icon-row" role="group" aria-label="Match size to reference">
+            <button class="icon-button" data-icon="width" data-command="match" data-dimension="width" aria-label="Match width" title="Match the reference shape’s width"><span>Width</span></button>
+            <button class="icon-button" data-icon="height" data-command="match" data-dimension="height" aria-label="Match height" title="Match the reference shape’s height"><span>Height</span></button>
+            <button class="icon-button" data-icon="both" data-command="match" data-dimension="both" aria-label="Match width and height" title="Match the reference shape’s width and height"><span>Both</span></button>
+          </div><select id="resize-anchor" aria-label="Keep fixed when resizing" title="Keep shape centers or top-left corners fixed"><option value="center">Centers</option><option value="top-left">Top-left</option></select></div>
+        </section>
+        <section class="tool-section shape-section" aria-labelledby="shape-heading">
+          <div class="section-heading"><h3 id="shape-heading">Shape</h3><select id="shape-kind" aria-label="Selected shape kind" title="Choose the actual type of all selected AutoShapes"><option value="Chevron">Chevrons</option><option value="RightArrow">Right arrows</option><option value="RoundRectangle">Rounded rectangles</option></select></div>
+          <div class="icon-row" role="group" aria-label="Shape adjustments">
+            <button class="icon-button" data-icon="angles" data-command="shape" data-action="angles" data-requires="1.10" aria-label="Match arrow angles" title="Match point angles to the reference; chevrons or right arrows"><span>Angles</span></button>
+            <button class="icon-button" data-icon="chain" data-command="shape" data-action="chain" data-requires="1.10" aria-label="Align process chain" title="Match chevron sizes and angles, interlock left to right using Gap; keep reference fixed"><span>Chain</span></button>
+            <button class="icon-button" data-icon="handles" data-command="shape" data-action="match-adjustments" data-requires="1.10" aria-label="Match shape adjustments" title="Copy the reference’s handle proportions to the same kind of shapes"><span>Handles</span></button>
+            <button class="icon-button" data-icon="arrow" data-command="shape" data-action="arrow" data-requires="1.10" aria-label="Set arrow proportions" title="Set right-arrow head depth and shaft thickness using Shape values"><span>Arrow</span></button>
+            <button class="icon-button" data-icon="radius" data-command="shape" data-action="radius" data-requires="1.10" aria-label="Set corner radius" title="Set rounded rectangles to the corner radius in Shape values"><span>Radius</span></button>
+          </div>
+          <details class="tool-options"><summary>Shape values</summary><div class="options-grid"><label>Radius <input id="corner-radius" type="number" value="10" min="0" max="1000" step="1" aria-label="Corner radius in points"></label><label>Head <input id="arrow-head" type="number" value="24" min="0.1" max="1000" step="1" aria-label="Arrowhead depth in points"></label><label>Shaft % <input id="arrow-shaft" type="number" value="50" min="1" max="99" step="1" aria-label="Arrow shaft percentage"></label><span class="unit">Radius / head in pt</span></div></details>
+          <p id="shape-unavailable" class="availability-note" hidden>Shape adjustments need a newer PowerPoint version.</p>
+        </section>
+        <section class="tool-section format-section" aria-labelledby="format-heading">
+          <div class="section-heading"><h3 id="format-heading">Format</h3><span class="section-hint">Apply checked properties</span></div>
+          <div class="color-row">
+            <div class="color-control"><label><input id="use-fill" type="checkbox" checked>Fill</label><input id="fill" type="color" value="#e7edde" aria-label="Fill color" title="Fill color"></div>
+            <div class="color-control"><label><input id="use-line" type="checkbox" checked>Line</label><input id="line" type="color" value="#72816a" aria-label="Outline color" title="Outline color"></div>
+            <div class="color-control"><label><input id="use-font" type="checkbox" checked>Text</label><input id="font-color" type="color" value="#24372b" aria-label="Text color" title="Text color"></div>
+          </div>
+          <div class="font-row"><input id="font" type="text" value="Arial" maxlength="100" aria-label="Font family" title="Font family"><input id="font-size" type="number" min="1" max="400" value="18" aria-label="Font size" title="Font size in points"><label class="bold-control" title="Bold text"><input id="bold" type="checkbox" aria-label="Bold"><span aria-hidden="true">B</span></label></div>
+          <div class="format-action-row"><label class="line-width-label" title="Outline width; zero hides the outline">Line <input id="line-width" type="number" min="0" max="50" step="0.25" value="1" aria-label="Outline width"><span class="unit">pt</span></label><button id="capture" class="icon-button" data-icon="copy" aria-label="Capture reference format" title="Copy the reference shape’s fill, outline, and font"><span>Copy</span></button><button id="apply-format" class="apply-button" data-icon="apply" title="Apply the checked formatting properties to the selection">Apply</button></div>
+        </section>
+        <section class="tool-section text-section" aria-labelledby="text-heading">
+          <div class="section-heading"><h3 id="text-heading">Text</h3><span class="section-hint">Split / merge make copies</span></div>
+          <div class="icon-row" role="group" aria-label="Text frame tools">
+            <button id="open-text-options" class="icon-button" data-icon="margins" aria-label="Text margins and alignment" title="Show text margins and paragraph alignment" aria-expanded="false" aria-controls="text-options"><span>Margins</span></button>
+            <button class="icon-button" data-icon="fit-shape" data-command="text" data-action="fit-shape" aria-label="Fit shape to text" title="Automatically resize the shape to fit its text"><span>Fit box</span></button>
+            <button class="icon-button" data-icon="fit-text" data-command="text" data-action="fit-text" aria-label="Shrink text to fit" title="Automatically shrink overflowing text to fit the shape"><span>Fit text</span></button>
+            <button class="icon-button" data-icon="wrap" data-command="text" data-action="wrap" aria-label="Toggle text wrapping" title="Toggle wrapping for all selected shapes; mixed selections turn wrapping on"><span>Wrap</span></button>
+            <button class="icon-button" data-icon="split" data-command="text" data-action="split" aria-label="Split paragraph copies" title="Create a text box per paragraph, using the Format font; keep the original"><span>Split</span></button>
+            <button class="icon-button" data-icon="merge" data-command="text" data-action="merge" aria-label="Merge text copy" title="Combine text top to bottom, then left to right, using the Format font; keep originals"><span>Merge</span></button>
+          </div>
+          <div class="icon-row" role="group" aria-label="Paragraph tools">
+            <button class="icon-button" data-icon="bullets" data-command="text" data-action="bullets" aria-label="Add bullets" title="Show bullets on all selected paragraphs"><span>Bullets</span></button>
+            <button class="icon-button" data-icon="numbering" data-command="text" data-action="numbering" data-requires="1.10" aria-label="Add numbering" title="Number all selected paragraphs"><span>1. 2. 3.</span></button>
+            <button class="icon-button" data-icon="plain-text" data-command="text" data-action="no-bullets" aria-label="Remove bullets and numbering" title="Remove bullets and numbering"><span>Plain</span></button>
+            <button class="icon-button" data-icon="outdent" data-command="text" data-action="outdent" data-requires="1.10" aria-label="Decrease text indent" title="Decrease paragraph indentation one level"><span>Outdent</span></button>
+            <button class="icon-button" data-icon="indent" data-command="text" data-action="indent" data-requires="1.10" aria-label="Increase text indent" title="Increase paragraph indentation one level"><span>Indent</span></button>
+            <button class="icon-button" data-icon="no-fit" data-command="text" data-action="no-autofit" aria-label="Turn off text autofit" title="Stop automatic resizing of the shape or text"><span>No fit</span></button>
+          </div>
+          <details id="text-options" class="tool-options"><summary>Text values</summary><div class="options-grid"><label>Left <input id="margin-left" type="number" value="7.2" min="0" max="1000" step="0.5" aria-label="Left text margin"></label><label>Right <input id="margin-right" type="number" value="7.2" min="0" max="1000" step="0.5" aria-label="Right text margin"></label><label>Top <input id="margin-top" type="number" value="3.6" min="0" max="1000" step="0.5" aria-label="Top text margin"></label><label>Bottom <input id="margin-bottom" type="number" value="3.6" min="0" max="1000" step="0.5" aria-label="Bottom text margin"></label></div><div class="text-settings-actions"><button data-command="text" data-action="margins" aria-label="Apply text margins">Set margins</button><span class="unit">pt</span><button data-command="text" data-action="margin-decrease" aria-label="Decrease all text margins" title="Reduce each existing margin by 1 pt">−1</button><button data-command="text" data-action="margin-increase" aria-label="Increase all text margins" title="Increase each existing margin by 1 pt">+1</button></div><div class="icon-row" role="group" aria-label="Paragraph alignment"><button class="icon-button" data-icon="text-left" data-command="text" data-action="text-left" aria-label="Align text left" title="Align paragraphs left"><span>Left</span></button><button class="icon-button" data-icon="text-center" data-command="text" data-action="text-center" aria-label="Center text" title="Center paragraphs"><span>Center</span></button><button class="icon-button" data-icon="text-right" data-command="text" data-action="text-right" aria-label="Align text right" title="Align paragraphs right"><span>Right</span></button></div></details>
+        </section>
+        <details class="presets-section"><summary>Saved formats</summary><div class="presets-body">
+          <div class="preset-row"><select id="presets" aria-label="Saved formats"><option value="">Saved formats</option></select><button id="load-preset" class="icon-button" data-icon="load" aria-label="Load saved format" title="Load the selected saved format"><span>Load</span></button><button id="delete-preset" class="icon-button" data-icon="trash" aria-label="Delete selected preset" title="Delete the selected saved format"><span>Delete</span></button></div>
+          <div class="preset-row"><input id="preset-name" aria-label="Format preset name" placeholder="Save current as…" maxlength="60"><button id="save-preset" class="icon-button" data-icon="save" aria-label="Save format" title="Save the current formatting values"><span>Save</span></button></div>
+        </div></details>
+      </fieldset>
+      <div id="status" role="status" aria-live="polite">Ready.</div>
+      <footer class="panel-footer"><span id="panel-footer">Points · ⌘Z undo</span><button id="toggle-labels" aria-pressed="false" title="Show labels below the tool icons">Labels</button><a href="/help.html" target="_blank" rel="noopener" aria-label="Help" title="Tool help">?</a></footer>
+    </aside>
+  </main>
+</body>
+</html>

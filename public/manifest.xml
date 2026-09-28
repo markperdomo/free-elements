@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<OfficeApp xmlns="http://schemas.microsoft.com/office/appforoffice/1.1"
+ xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+ xmlns:bt="http://schemas.microsoft.com/office/officeappbasictypes/1.0" xsi:type="TaskPaneApp">
+  <Id>71209546-c69f-414c-9272-62b30ff06d1c</Id>
+  <Version>1.0.0.2</Version>
+  <ProviderName>Free Elements</ProviderName>
+  <DefaultLocale>en-US</DefaultLocale>
+  <DisplayName DefaultValue="Free Elements"/>
+  <Description DefaultValue="Align, space, resize, and format selected shapes in PowerPoint."/>
+  <IconUrl DefaultValue="https://localhost:3443/assets/icon-32.png"/>
+  <HighResolutionIconUrl DefaultValue="https://localhost:3443/assets/icon-80.png"/>
+  <SupportUrl DefaultValue="https://localhost:3443/help.html"/>
+  <AppDomains><AppDomain>https://localhost:3443</AppDomain></AppDomains>
+  <Hosts><Host Name="Presentation"/></Hosts>
+  <!-- Load the pane on older hosts so its runtime check can explain missing APIs. -->
+  <Requirements><Sets DefaultMinVersion="1.1"><Set Name="PowerPointApi" MinVersion="1.1"/></Sets></Requirements>
+  <DefaultSettings><SourceLocation DefaultValue="https://localhost:3443/?host=powerpoint"/></DefaultSettings>
+  <Permissions>ReadWriteDocument</Permissions>
+  <VersionOverrides xmlns="http://schemas.microsoft.com/office/taskpaneappversionoverrides" xsi:type="VersionOverridesV1_0">
+    <Hosts>
+      <Host xsi:type="Presentation">
+        <DesktopFormFactor>
+          <ExtensionPoint xsi:type="PrimaryCommandSurface">
+            <OfficeTab id="TabHome">
+              <Group id="FreeElements.Group">
+                <Label resid="FreeElements.Label"/>
+                <Icon>
+                  <bt:Image size="16" resid="Icon.Small"/>
+                  <bt:Image size="32" resid="Icon.Small"/>
+                  <bt:Image size="80" resid="Icon.Large"/>
+                </Icon>
+                <Control xsi:type="Button" id="FreeElements.Open">
+                  <Label resid="FreeElements.Label"/>
+                  <Supertip>
+                    <Title resid="FreeElements.Label"/>
+                    <Description resid="FreeElements.Tip"/>
+                  </Supertip>
+                  <Icon>
+                    <bt:Image size="16" resid="Icon.Small"/>
+                    <bt:Image size="32" resid="Icon.Small"/>
+                    <bt:Image size="80" resid="Icon.Large"/>
+                  </Icon>
+                  <Action xsi:type="ShowTaskpane">
+                    <TaskpaneId>FreeElements.Tools</TaskpaneId>
+                    <SourceLocation resid="FreeElements.Url"/>
+                  </Action>
+                </Control>
+              </Group>
+            </OfficeTab>
+          </ExtensionPoint>
+        </DesktopFormFactor>
+      </Host>
+    </Hosts>
+    <Resources>
+      <bt:Images>
+        <bt:Image id="Icon.Small" DefaultValue="https://localhost:3443/assets/icon-32.png"/>
+        <bt:Image id="Icon.Large" DefaultValue="https://localhost:3443/assets/icon-80.png"/>
+      </bt:Images>
+      <bt:Urls><bt:Url id="FreeElements.Url" DefaultValue="https://localhost:3443/?host=powerpoint"/></bt:Urls>
+      <bt:ShortStrings><bt:String id="FreeElements.Label" DefaultValue="Free Elements"/></bt:ShortStrings>
+      <bt:LongStrings><bt:String id="FreeElements.Tip" DefaultValue="Align, space, size, and format selected shapes."/></bt:LongStrings>
+    </Resources>
+  </VersionOverrides>
+</OfficeApp>

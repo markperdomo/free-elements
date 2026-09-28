@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="960" height="300" viewBox="0 0 960 300" role="img" aria-labelledby="title desc">
+<title id="title">Free Elements: tidy up your slides</title><desc id="desc">A diagram showing uneven shapes before, and shapes with matching sizes, aligned tops, and equal gaps after.</desc>
+<rect width="960" height="300" rx="18" fill="#f4f6f1"/>
+<text x="40" y="52" font-family="system-ui,sans-serif" font-size="26" font-weight="650" fill="#24372b">Less nudging. More presenting.</text>
+<text x="40" y="91" font-family="system-ui,sans-serif" font-size="15" fill="#566451">Align · Space · Resize · Format</text>
+<rect x="40" y="124" width="390" height="140" rx="10" fill="white"/><rect x="530" y="124" width="390" height="140" rx="10" fill="white"/>
+<g fill="#e7edde" stroke="#72816a" stroke-width="2"><rect x="63" y="158" width="87" height="59" rx="5"/><rect x="168" y="181" width="62" height="45" rx="5"/><rect x="266" y="148" width="121" height="83" rx="5"/></g>
+<path d="M457 190h44m-12-12 13 12-13 12" fill="none" stroke="#72816a" stroke-width="3" stroke-linecap="round"/>
+<g fill="#e7edde" stroke="#72816a" stroke-width="2"><rect x="558" y="165" width="91" height="63" rx="5"/><rect x="678" y="165" width="91" height="63" rx="5"/><rect x="798" y="165" width="91" height="63" rx="5"/></g>
+<g font-family="system-ui,sans-serif" font-size="12" fill="#566451"><text x="63" y="251">BEFORE</text><text x="558" y="251">ALIGNED, MATCHED, EVENLY SPACED</text></g>
+</svg>

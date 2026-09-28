@@ -1,0 +1,7 @@
+* text=auto
+*.bas text eol=crlf
+*.cls text eol=crlf
+*.sh text eol=lf
+native/installer/preinstall text eol=lf
+*.png binary
+*.pptx binary

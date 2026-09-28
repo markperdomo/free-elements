@@ -1,0 +1,140 @@
+:root{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;color:#303943;background:#eef0f2;font-synthesis:none;font-size:12px}
+*{box-sizing:border-box}
+body{margin:0}
+button,input,select{font:inherit}
+button,a,input,select{-webkit-tap-highlight-color:transparent}
+button{cursor:pointer;border:1px solid #ccd2d9;background:#fff;border-radius:3px;color:inherit;padding:3px 6px;line-height:1.15}
+button:hover{background:#e4edf5;border-color:#b6cbdf;color:#264f72}
+button:active{background:#cddfef;border-color:#81abd0}
+button:disabled{opacity:.35;cursor:default}
+button:focus-visible,a:focus-visible,input:focus-visible,select:focus-visible,summary:focus-visible{outline:2px solid #3781c3;outline-offset:1px}
+input,select{border:1px solid #ccd2d9;border-radius:3px;padding:2px 4px;background:#fff;color:inherit;min-width:0}
+input[type=checkbox]{accent-color:#397eaf}
+fieldset{border:0;padding:0;margin:0;min-width:0}
+
+/* Keep the 16:9 canvas inside the available laptop viewport in both axes. */
+.app-header{height:40px;display:flex;align-items:center;justify-content:space-between;padding:0 12px;border-bottom:1px solid #cfd4d9;background:#fafbfc}
+.brand{display:flex;gap:8px;align-items:center;color:inherit;text-decoration:none;font-weight:600;font-size:12px}
+.brand-mark{font-family:Georgia,serif;font-size:24px;letter-spacing:-2px;padding-right:2px;color:#497eaa}
+.header-right{display:flex;align-items:center;gap:10px;color:#89929c;font-size:10px}
+.badge{color:#657484}
+.version{font-size:9px}
+main{display:grid;grid-template-columns:minmax(0,1fr) 208px;min-height:calc(100dvh - 40px)}
+.workspace{height:calc(100dvh - 40px);min-height:300px;min-width:0;padding:8px 12px;display:grid;grid-template-rows:28px minmax(0,1fr) 22px auto;gap:6px}
+.canvas-toolbar{display:flex;align-items:center;justify-content:space-between;gap:8px;min-width:0;font-size:11px;color:#65717e}
+.slide-title{overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.muted{color:#939ba4;margin-left:4px}
+.canvas-actions{display:flex;align-items:center;gap:2px;flex-shrink:0}
+.quiet{background:transparent;border-color:transparent;font-size:11px;white-space:nowrap;height:26px;padding:3px 6px}
+.slide-stage{display:grid;place-items:center;min-height:0;min-width:0;container-type:size}
+.slide-wrap{width:min(100%,calc(100cqh * 16 / 9));aspect-ratio:16/9;background:#fff;box-shadow:0 2px 12px #24364b12;outline:1px solid #d3d8dd;overflow:hidden}
+#slide{width:100%;height:auto;display:block;touch-action:none;user-select:none}
+.canvas-footer{display:flex;align-items:center;justify-content:space-between;gap:10px;font-size:10px;color:#7b8692;white-space:nowrap}
+.selection-inspector{border-top:1px solid #d4d9df;min-width:0}
+.selection-inspector summary{font-size:10px;color:#6f7d89;padding:5px 0;cursor:pointer;width:fit-content}
+#object-list{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:4px;padding:3px 0}
+.object-row{padding:5px 6px;min-width:0;border:1px solid #d8dfe4;border-radius:3px;display:flex;align-items:center;gap:5px;font-size:10px;background:#f8fafb;cursor:pointer}
+.object-row input{margin:0;width:12px;height:12px}
+.object-row small{margin-left:auto;color:#85909a;font-size:9px;white-space:nowrap}
+.object-dot{height:8px;width:8px;border-radius:1px;flex-shrink:0}
+.object-row.selected{border-color:#b4c7d8;background:#e9f1f7}
+
+/* Dense mouse/trackpad palette. Icon targets stay at least 24 x 24 px. */
+.tool-panel{--accent:#4383b8;border-left:1px solid #cfd4d9;background:#f7f8fa;min-width:0;font-size:11px;align-self:stretch}
+.tool-panel input,.tool-panel select{height:22px;font-size:11px}
+.tool-panel input[type=checkbox]{height:12px;width:12px;padding:0;margin:0;flex-shrink:0}
+.tool-panel input[type=number]{width:44px;font-variant-numeric:tabular-nums}
+.tool-panel select{cursor:pointer;text-overflow:ellipsis}
+.selection-bar{height:30px;display:flex;align-items:center;gap:4px;padding:0 6px;color:#66717d;background:#eef1f4;border-bottom:1px solid #ccd2d9;font-size:10px}
+#selection-count{white-space:nowrap;margin-right:3px;font-variant-numeric:tabular-nums}
+.selection-bar label{font-size:9px}
+.selection-bar select{flex:1;min-width:0;font-size:10px;height:22px;padding-left:2px}
+.tool-panel .selection-bar .icon-button{width:24px;flex-shrink:0}
+.tool-section{padding:3px 6px 4px;border-bottom:1px solid #ccd2d9}
+.section-heading{display:flex;align-items:center;justify-content:space-between;gap:4px;min-height:20px;margin-bottom:1px}
+.tool-panel h3{font-size:10px;color:#77828e;font-weight:500;margin:0;white-space:nowrap}
+.section-heading select{height:20px;font-size:10px;max-width:115px;padding:0 2px;background:transparent;border-color:transparent;color:#596978}
+.section-heading select:hover{background:#fff;border-color:#ccd2d9}
+.section-hint{font-size:8px;color:#86909b;white-space:nowrap}
+.icon-row{display:grid;grid-template-columns:repeat(6,minmax(0,1fr));gap:1px}
+.tool-panel .icon-button{position:relative;display:inline-flex;align-items:center;justify-content:center;flex-direction:column;gap:1px;min-width:24px;height:24px;padding:2px;border:1px solid transparent;background:transparent;color:#596978;border-radius:2px;line-height:1}
+.tool-panel button:hover{background:#e4edf5;border-color:#b6cbdf;color:#264f72}
+.tool-panel button:active{background:#cddfef;border-color:#81abd0}
+.tool-panel svg{display:block;width:18px;height:18px;flex-shrink:0}
+.icon-shape{fill:#ced8e2;stroke:#8fa0b0;stroke-width:.8}
+.icon-accent{stroke:var(--accent);stroke-width:1.6}
+.icon-base{stroke:#748594}
+.icon-button>span{position:absolute;width:1px;height:1px;overflow:hidden;clip-path:inset(50%);white-space:nowrap}
+.show-labels .icon-row .icon-button{height:37px;padding:2px 0}
+.show-labels .icon-row .icon-button>span{position:static;clip-path:none;width:auto;height:auto;font-size:8px;line-height:11px}
+.spacing-section{--accent:#32948f}
+.parameter-row{display:flex;align-items:center;gap:6px}
+.parameter-row label,.line-width-label{display:flex;align-items:center;gap:3px;color:#66717d;font-size:10px;min-width:0}
+.tool-panel .parameter-row input{height:20px;width:44px;font-size:10px;padding:1px 2px}
+.tool-panel #columns{width:36px}
+.unit{color:#8a929c;font-size:9px}
+.size-section{--accent:#9170ba}
+.size-row{display:flex;align-items:center;gap:4px}
+.size-row .icon-row{grid-template-columns:repeat(3,minmax(24px,1fr));flex:1;min-width:74px}
+.size-row select{height:22px;width:78px;font-size:10px;color:#66717d;padding:1px 2px}
+.format-section{--accent:#c49152}
+.color-row{display:flex;gap:6px;align-items:center;margin:0 0 4px}
+.color-control{flex:1;min-width:0;display:flex;align-items:center;justify-content:space-between;gap:2px}
+.color-control label{display:flex;align-items:center;gap:2px;font-size:10px;cursor:pointer}
+.tool-panel input[type=color]{width:18px;min-width:18px;height:18px;border:1px solid #bdc6cf;border-radius:2px;padding:2px;cursor:pointer;background:#fff}
+.tool-panel input[type=color]::-webkit-color-swatch-wrapper{padding:0}
+.tool-panel input[type=color]::-webkit-color-swatch{border:0;border-radius:0}
+.font-row{display:flex;align-items:center;gap:3px;margin:0 0 4px}
+#font{flex:1;width:0}
+#font-size{width:44px}
+.bold-control{position:relative;display:grid;place-items:center;width:24px;height:22px;cursor:pointer;flex-shrink:0}
+.tool-panel .bold-control input{position:absolute;opacity:0;width:100%;height:100%;cursor:pointer}
+.bold-control span{font-size:12px;font-weight:700;display:grid;place-items:center;width:100%;height:100%;border:1px solid #ccd2d9;border-radius:3px;background:#fff}
+.bold-control input:checked+span{background:#dce9f5;border-color:#91b4d4;color:#285c87}
+.bold-control input:focus-visible+span{outline:2px solid #3781c3;outline-offset:1px}
+.format-action-row{display:flex;gap:4px;align-items:center}
+.line-width-label{margin-right:auto;gap:3px}
+.tool-panel .format-action-row .icon-button{width:24px;height:24px}
+.tool-panel .apply-button{height:24px;padding:2px 6px;display:flex;align-items:center;gap:3px;background:#e7edf3;border-color:#becddd;color:#345977;font-size:11px}
+.apply-button svg{width:16px;height:16px}
+.presets-section{border-bottom:1px solid #ccd2d9}
+.presets-section summary{padding:4px 6px;cursor:pointer;color:#66717d;font-size:10px;user-select:none;min-height:22px}
+.presets-section summary:hover{background:#edf1f5}
+.presets-body{padding:0 6px 4px}
+.preset-row{display:flex;gap:3px;margin-top:3px;align-items:center}
+.preset-row input,.preset-row select{flex:1;width:0;min-width:0;font-size:10px}
+.tool-panel .preset-row .icon-button{width:24px;flex-shrink:0}
+#status{font-size:10px;line-height:13px;padding:4px 6px;color:#667682;min-height:21px;max-height:34px;overflow:hidden;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow-wrap:anywhere}
+#status.error{color:#aa422b;background:#fff0eb;border-bottom:1px solid #edc2b6;max-height:none;display:block;-webkit-line-clamp:unset}
+.panel-footer{display:flex;align-items:center;gap:6px;padding:2px 6px 5px;font-size:9px;color:#8b959f;line-height:1.3}
+#panel-footer{margin-right:auto}
+.tool-panel #toggle-labels{border:0;background:transparent;color:#687f93;padding:2px;font-size:9px}
+.tool-panel #toggle-labels[aria-pressed=true]{color:#245882;background:#dce9f5}
+.panel-footer a{text-decoration:none;border:1px solid #c8d1da;border-radius:50%;display:grid;place-items:center;width:14px;height:14px;flex-shrink:0;color:#667e92;font-size:9px}
+.office{background:#f7f8fa}
+.office .workspace,.office .app-header{display:none}
+.office main{display:block;min-height:100dvh}
+.office .tool-panel{border:0;min-height:100dvh}
+/* Space for the Office-owned menu at the top right of its web view. */
+.office .selection-bar{padding-right:36px}
+@media(max-width:1050px){.object-row small{display:none}.workspace{padding:6px 8px}.slide-title{font-size:10px}.quiet{padding:3px 4px;font-size:10px}}
+@media(min-width:621px) and (max-width:850px){.slide-title{display:none}.canvas-toolbar{justify-content:flex-end}.canvas-footer{font-size:9px}.canvas-footer span:first-child{overflow:hidden;text-overflow:ellipsis}}
+@media(max-width:620px){main{grid-template-columns:1fr}.workspace{height:auto;min-height:0;padding:8px;grid-template-rows:auto auto 22px auto}.canvas-toolbar{flex-wrap:wrap;gap:4px}.slide-stage{container-type:inline-size;aspect-ratio:16/9}.slide-wrap{width:100%}.canvas-footer{font-size:9px}.tool-panel{width:270px;max-width:100%;margin:6px auto 16px;border:1px solid #cfd4d9}.office .tool-panel{width:100%;margin:0}.object-row{padding:5px 3px;gap:3px;font-size:9px}}
+#example{font-size:10px;height:24px;max-width:130px;min-width:75px;background:transparent;border-color:transparent;color:#65717e}
+.shape-section{--accent:#a88744}
+.text-section{--accent:#4c82b4}
+.tool-options{margin-top:1px}
+.tool-options summary{font-size:9px;color:#768594;cursor:pointer;padding:3px 0;min-height:18px}
+.options-grid{display:grid;grid-template-columns:1fr 1fr;gap:4px;margin:3px 0}
+.options-grid label{display:flex;align-items:center;justify-content:space-between;gap:3px;font-size:10px;color:#66717d;min-width:0}
+.options-grid .unit{align-self:center}
+.text-settings-actions{display:flex;align-items:center;gap:4px;margin:4px 0}
+.text-settings-actions button{font-size:10px;height:24px}
+.text-settings-actions .unit{margin-right:auto}
+.availability-note{font-size:10px;line-height:1.4;margin:4px 0;color:#8c6841}
+.tool-panel [hidden]{display:none}
+@media(min-width:621px) and (max-width:760px){#example{max-width:84px;min-width:55px;font-size:9px}.canvas-actions{gap:0}.quiet{padding:3px;font-size:9px}.canvas-toolbar{gap:2px}}
+/* Expanded settings scroll inside the palette, leaving the slide in place. */
+.tool-panel{height:calc(100dvh - 40px);overflow:auto;scrollbar-width:thin}
+@media(max-width:620px){.tool-panel{height:auto;overflow:visible}}
+.office .tool-panel{height:100dvh;min-height:0;overflow:auto}

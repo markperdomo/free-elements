@@ -1,0 +1,15 @@
+#!/bin/sh
+# Stop before Installer copies anything into PowerPoint's process/library path.
+set -eu
+if [ "$(/usr/bin/sw_vers -productVersion | /usr/bin/cut -d . -f 1)" -lt 12 ]; then
+    echo 'Free Elements requires macOS 12 or later.' >&2
+    exit 1
+fi
+process_status=0
+/usr/bin/pgrep -x 'Microsoft PowerPoint' >/dev/null || process_status=$?
+case "$process_status" in
+    0) echo 'Quit Microsoft PowerPoint, then run the Free Elements installer again.' >&2; exit 1 ;;
+    1) ;; # No matching processes.
+    *) echo 'Could not check whether PowerPoint is running. Installation stopped before copying files.' >&2; exit 1 ;;
+esac
+exit 0

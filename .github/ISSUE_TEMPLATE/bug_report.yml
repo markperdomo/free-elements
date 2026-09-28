@@ -1,0 +1,33 @@
+name: Bug report
+description: Report a reproducible problem with Free Elements
+title: '[Bug]: '
+body:
+  - type: markdown
+    attributes:
+      value: 'Use an anonymized example. Do not attach private presentations, credentials, or proprietary add-in files.'
+  - type: input
+    id: version
+    attributes:
+      label: Free Elements version
+      placeholder: '0.2.2'
+    validations:
+      required: true
+  - type: input
+    id: environment
+    attributes:
+      label: Environment
+      description: macOS version, Apple Silicon or Intel, PowerPoint version; or browser/Node version for the playground
+    validations:
+      required: true
+  - type: textarea
+    id: reproduction
+    attributes:
+      label: Steps to reproduce
+      description: Include the command, selection/shape types, expected result, actual result, and exact error text.
+    validations:
+      required: true
+  - type: textarea
+    id: example
+    attributes:
+      label: Screenshots or minimal example
+      description: Optional, with any private content removed

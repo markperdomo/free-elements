@@ -1,0 +1,30 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Free Elements · Help</title><link rel="stylesheet" href="/styles.css"></head>
+<body><article style="max-width:700px;margin:24px auto;padding:24px;line-height:1.8;font-size:13px">
+<h1>Free Elements tools</h1>
+<p>Select text boxes or AutoShapes on one slide, then open <strong>Home → Free Elements</strong> in PowerPoint. Choose the reference shape in the Ref list. Hover for tool names, or enable Labels at the bottom. Extra numeric controls expand under Shape values and Text values.</p>
+<h2>Position and size</h2>
+<p>Equal gaps keeps the outer shapes fixed. Fixed spacing keeps the leftmost or topmost shape fixed. Match size preserves centers or top-left corners. Grid orders shapes from top to bottom, then left to right. Swap works on exactly two shapes.</p>
+<h2>Shape</h2>
+<p>Choose the actual shape kind: chevrons, right arrows, or rounded rectangles. All selected shapes must be the same kind and unrotated. These tools change the existing shapes and retain their text, fill, and outline.</p>
+<ul>
+<li><strong>Angles:</strong> match the reference’s point angle while retaining each shape’s dimensions.</li>
+<li><strong>Chain:</strong> align right-facing chevrons, matching the reference’s dimensions and handles. The reference stays fixed; Gap controls horizontal space between corresponding angled edges.</li>
+<li><strong>Handles:</strong> copy the reference’s proportional handle settings to matching shapes.</li>
+<li><strong>Arrow:</strong> set a constant arrowhead depth in points and shaft thickness as a percentage of height.</li>
+<li><strong>Radius:</strong> give rounded rectangles the same physical corner radius in points, even when their sizes differ.</li>
+</ul>
+<p>Use Shape values for radius, head depth, and shaft percentage. The shape kind is an explicit choice; the tool checks handle counts but cannot identify every AutoShape type automatically.</p>
+<h2>Text</h2>
+<p>Margins opens four independent text margins in points. Set margins applies those values; −1 and +1 change every existing margin by one point. Paragraph alignment is below the margin controls.</p>
+<p>Fit box allows the shape to resize to its text. Fit text shrinks overflowing text inside the shape. No fit turns automatic resizing off. Wrap toggles wrapping for all selected shapes; a mixed selection turns wrapping on.</p>
+<p>Bullets, numbering, plain paragraphs, and indent/outdent operate on the paragraphs of the selected shapes. Existing words and font runs are preserved.</p>
+<p><strong>Split and merge create copies.</strong> Split one box into a box per paragraph. Merge two or more boxes in top-to-bottom, then left-to-right order. Originals remain intact. New boxes use the font, size, text color, and bold values in Format, and appear offset slightly from the originals. Copies contain plain text; they do not carry over hyperlinks, mixed font runs, or original bullet definitions. Move the selected copies where you want them.</p>
+<h2>Formatting and saved formats</h2>
+<p>Use the Format checkboxes to choose which properties to apply. Applying font settings makes those properties uniform across the selected shapes. Capture supports opaque solid fills, simple solid outlines, and uniform fonts. Saved formats stay in this browser or task pane.</p>
+<h2>Undo and compatibility</h2>
+<p>Click the slide and press ⌘Z for PowerPoint Undo, or use PowerPoint’s Undo button. Playground Undo applies only to the browser example. Choose a playground example to try chevrons, arrows, rounded rectangles, or multiline text.</p>
+<p>Groups, pictures, tables, charts, and rotated shape geometry are not supported by these tools. Advanced Shape and paragraph controls are disabled on older PowerPoint versions. The browser approximates text metrics; PowerPoint uses its native text layout. Cursor-based splitting and language shortcuts are not implemented.</p>
+<p>Keep the local HTTPS server running while using this development build.</p>
+<p><a href="/">Open the playground →</a></p>
+</article></body></html>
